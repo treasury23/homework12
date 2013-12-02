@@ -5,6 +5,10 @@ namespace Geekhub\PostBundle\Entity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="guestbook")
+ */
 class GuestBook
 {
     /**
@@ -16,7 +20,7 @@ class GuestBook
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column(type="string", length=100)
      * @var string name
      */
     protected $name;

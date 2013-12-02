@@ -20,6 +20,6 @@ class GuestBookController extends Controller
 
         $form = $this->createForm(new GuestBookType(), $guestbook);
 
-        return $this->render('GeekhubPostBundle:GuestBook:index.html.twig', array('form' => $form->createView(), 'posts' => 1));
+        return array('form' => $form->createView());
     }
 }
