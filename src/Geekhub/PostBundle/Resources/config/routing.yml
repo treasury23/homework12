@@ -1,0 +1,3 @@
+guestBook:
+    pattern:  /
+    defaults: { _controller: GeekhubPostBundle:GuestBook:index }
