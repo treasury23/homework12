@@ -42,30 +42,12 @@ class GuestBook
      */
     protected $body;
 
-    /**
-     * Set email
-     * @param string $email
-     * @return GuestBook
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
+    
 
     /**
      * Get id
-     * @return int
+     *
+     * @return integer 
      */
     public function getId()
     {
@@ -73,41 +55,71 @@ class GuestBook
     }
 
     /**
+     * Set name
+     *
+     * @param string $name
+     * @return GuestBook
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return GuestBook
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
      * Set body
+     *
      * @param string $body
      * @return GuestBook
      */
     public function setBody($body)
     {
         $this->body = $body;
-
+    
         return $this;
     }
 
     /**
      * Get body
-     * @return string
+     *
+     * @return string 
      */
     public function getBody()
     {
         return $this->body;
-    }
-
-    /**
-     * Set name
-     * @param string $name
-     * $return GuestBook
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 }
