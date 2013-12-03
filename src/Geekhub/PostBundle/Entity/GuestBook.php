@@ -20,18 +20,23 @@ class GuestBook
     protected $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[a-z]+$/i", message="only letters")
      * @ORM\Column(type="string", length=100)
      * @var string name
      */
     protected $name;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Email
      * @ORM\Column(type="string", length=150)
      * @var string email
      */
     protected $email;
 
     /**
+     * @Assert\Length(min=100)
      * @ORM\Column(type="text")
      * @var string message
      */

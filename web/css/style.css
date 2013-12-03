@@ -140,4 +140,7 @@ input {
 .btn-primary{
     margin-bottom: 5px;
 }
+.form_error{
+    color: red;
+}
 
