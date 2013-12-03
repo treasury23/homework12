@@ -22,6 +22,13 @@ class GuestBookController extends Controller
         $em = $this->getDoctrine()->getManager();
         $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findAll();
 
+        $paginator = $this->get('knp_paginator');
+        $posts = $paginator->paginate(
+            $posts,
+            $request->query->get('page', 1),
+            $this->container->getParameter('post_pagination')
+        );
+
         if ($request->getMethod() == 'POST') {
 
             $form->handleRequest($request);
