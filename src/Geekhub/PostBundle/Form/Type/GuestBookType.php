@@ -11,7 +11,7 @@ class GuestBookType extends AbstractType
     {
         $builder->add('name');
         $builder->add('email');
-        $builder->add('message');
+        $builder->add('body');
     }
 
     /**
@@ -21,6 +21,6 @@ class GuestBookType extends AbstractType
      */
     public function getName()
     {
-        return 'guestbook';
+        return 'GuestBook';
     }
 }

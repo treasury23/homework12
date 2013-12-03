@@ -11,15 +11,30 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class GuestBookController extends Controller
 {
+
     /**
      * @Template()
      */
     public function indexAction(Request $request)
     {
-        $guestbook = new GuestBook();
+        $post = new GuestBook();
+        $form = $this->createForm(new GuestBookType(), $post);
+        $em = $this->getDoctrine()->getManager();
+        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findAll();
 
-        $form = $this->createForm(new GuestBookType(), $guestbook);
+        if ($request->getMethod() == 'POST') {
 
-        return array('form' => $form->createView());
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+
+                $em->persist($post);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('guestBook'));
+            }
+        }
+
+        return array('form' => $form->createView(), 'posts' => $posts);
     }
 }

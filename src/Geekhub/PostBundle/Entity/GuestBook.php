@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="guestbook")
+ * @ORM\Table(name="GuestBook")
  */
 class GuestBook
 {
@@ -35,7 +35,7 @@ class GuestBook
      * @ORM\Column(type="text")
      * @var string message
      */
-    protected $message;
+    protected $body;
 
     /**
      * Set email
@@ -68,24 +68,24 @@ class GuestBook
     }
 
     /**
-     * Set message
-     * @param string $message
+     * Set body
+     * @param string $body
      * @return GuestBook
      */
-    public function setMessage($message)
+    public function setBody($body)
     {
-        $this->message = $message;
+        $this->body = $body;
 
         return $this;
     }
 
     /**
-     * Get message
+     * Get body
      * @return string
      */
-    public function getMessage()
+    public function getBody()
     {
-        return $this->message;
+        return $this->body;
     }
 
     /**
