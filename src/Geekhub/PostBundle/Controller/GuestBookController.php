@@ -37,4 +37,37 @@ class GuestBookController extends Controller
 
         return array('form' => $form->createView(), 'posts' => $posts);
     }
+
+    /**
+     * @Template()
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findOneById($id);
+
+        if (!$posts) {
+            throw new \Exception("Post not found!");
+        }
+
+        return array('posts' => $posts);
+    }
+
+    /**
+     * @Template()
+     */
+    public function removeAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findOneById($id);
+
+        if (!$posts) {
+            throw new \Exception("Post not found!");
+        }
+
+        $em->remove($posts);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('guestBook'));
+    }
 }

@@ -35,13 +35,18 @@
         <div class="wrapper-post">
             {% for post in posts %}
             <div class="post">
-                    <p>{{ post.id }}</p>
-                    <p>{{ post.body }}</p>
+                <div class="title-post">
+                 <p>Запись #{{ post.id }}</p>
+                 <p>{{ post.body | slice(0,100) }}</p>
+                    </div>
+                <div class="post-button">
+                    <a class="btn btn-primary" href="{{ path('guestBook_show', {'id': post.id}) }}" role="button">Show</a><br>
+                    <a class="btn btn-danger" href="{{ path('guestBook_remove', {'id': post.id}) }}" role="button">Delete</a>
+                </div>
             </div>
+
             {% endfor %}
         </div>
-       
-
         <!-- Site footer -->
         <div class="footer">
             <p>FOOTER</p>

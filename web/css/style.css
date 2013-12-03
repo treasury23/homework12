@@ -129,7 +129,15 @@ input {
 }
 
 .wrapper-post{
-    height: 330px;
+    height: 250px;
     overflow-y: scroll;
+}
+
+.title-post{
+    width: 730px;
+    float: left;
+}
+.btn-primary{
+    margin-bottom: 5px;
 }
 
