@@ -9,9 +9,9 @@ class GuestBookType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $option)
     {
-        $builder->add('name');
-        $builder->add('email');
-        $builder->add('body');
+        $builder->add('name', 'text');
+        $builder->add('email', 'email');
+        $builder->add('body', 'textarea');
     }
 
     /**
