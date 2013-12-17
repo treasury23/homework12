@@ -22,7 +22,8 @@
         "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
         "twbs/bootstrap": "3.0.*@dev",
         "components/jquery": "1.10.2",
-        "knplabs/knp-paginator-bundle": "dev-master"
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "stof/doctrine-extensions-bundle": "v1.1.0"
     },
     "scripts": {
         "post-install-cmd": [
