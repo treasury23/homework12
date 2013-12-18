@@ -4,6 +4,7 @@ namespace Geekhub\PostBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -42,7 +43,19 @@ class GuestBook
      */
     protected $body;
 
-    
+    /**
+     * @var date $created
+     *
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     */
+    protected  $created;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=150, unique=true)
+     */
+    private $slug;
 
     /**
      * Get id
@@ -121,5 +134,51 @@ class GuestBook
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return GuestBook
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return GuestBook
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

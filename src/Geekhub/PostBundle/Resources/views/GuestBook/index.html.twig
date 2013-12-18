@@ -37,6 +37,8 @@
                 <div class="title-post">
                     <p>Запись #{{ post.id }}</p>
                     <p>{{ post.body | slice(0,100) }}</p>
+                    <p>Дата сообщения:{{ post.getCreated()| date("d.m.Y")  }}</p>
+
                 </div>
                 <div class="post-button">
                     <a class="btn btn-primary" href="{{ path('guestBook_show', {'id': post.id}) }}" role="button">Show</a><br>
