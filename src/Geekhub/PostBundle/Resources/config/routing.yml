@@ -3,9 +3,9 @@ guestBook:
     defaults: { _controller: GeekhubPostBundle:GuestBook:index }
 
 guestBook_show:
-    pattern:  /show/{id}
+    pattern:  /show/{slug}
     defaults: { _controller: GeekhubPostBundle:GuestBook:show }
 
 guestBook_remove:
-    pattern:  /remove/{id}
+    pattern:  /remove/{slug}
     defaults: { _controller: GeekhubPostBundle:GuestBook:remove }

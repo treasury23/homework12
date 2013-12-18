@@ -35,14 +35,14 @@
             {% for post in posts %}
             <div class="post">
                 <div class="title-post">
-                    <p>Запись #{{ post.id }}</p>
+                    <p>Запись #{{ post.slug }}</p>
                     <p>{{ post.body | slice(0,100) }}</p>
                     <p>Дата сообщения:{{ post.getCreated()| date("d.m.Y")  }}</p>
 
                 </div>
                 <div class="post-button">
-                    <a class="btn btn-primary" href="{{ path('guestBook_show', {'id': post.id}) }}" role="button">Show</a><br>
-                    <a class="btn btn-danger" href="{{ path('guestBook_remove', {'id': post.id}) }}" role="button">Delete</a>
+                    <a class="btn btn-primary" href="{{ path('guestBook_show', {'slug': post.slug}) }}" role="button">Show</a><br>
+                    <a class="btn btn-danger" href="{{ path('guestBook_remove', {'slug': post.slug}) }}" role="button">Delete</a>
                 </div>
             </div>
             {% endfor %}

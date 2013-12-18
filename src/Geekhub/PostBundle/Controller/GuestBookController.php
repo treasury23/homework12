@@ -48,10 +48,10 @@ class GuestBookController extends Controller
     /**
      * @Template()
      */
-    public function showAction($id)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findOneById($id);
+        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findOneBy(array('slug' => $slug));
 
         if (!$posts) {
             throw new \Exception("Post not found!");
@@ -65,10 +65,10 @@ class GuestBookController extends Controller
     /**
      * @Template()
      */
-    public function removeAction($id)
+    public function removeAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findOneById($id);
+        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findOneBy(array('slug' => $slug));
 
         if (!$posts) {
             throw new \Exception("Post not found!");
