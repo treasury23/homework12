@@ -9,6 +9,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @ORM\Entity
  * @ORM\Table(name="GuestBook")
+ *
+ * @ORM\Entity(repositoryClass="Geekhub\PostBundle\Repository\GuestBookRepository")
  */
 class GuestBook
 {

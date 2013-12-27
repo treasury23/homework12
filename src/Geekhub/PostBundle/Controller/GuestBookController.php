@@ -20,7 +20,7 @@ class GuestBookController extends Controller
         $post = new GuestBook();
         $form = $this->createForm(new GuestBookType(), $post);
         $em = $this->getDoctrine()->getManager();
-        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findAll();
+        $posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findAllPostDesc();
 
         $paginator = $this->get('knp_paginator');
         $posts = $paginator->paginate(
