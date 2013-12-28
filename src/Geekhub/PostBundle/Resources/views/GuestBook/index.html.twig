@@ -36,7 +36,8 @@
             <div class="post">
                 <div class="title-post">
                     <p>Запись #{{ post.slug }}</p>
-                    <p>{{ post.body | slice(0,100) }}</p>
+                    <p>{#{ post.body | slice(0,100) }#}</p>
+                    <p>{{ post.body|limitSymbol(100) }}</p>
                     <p>Дата сообщения:{{ post.getCreated()| date("d.m.Y")  }}</p>
 
                 </div>
