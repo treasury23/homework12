@@ -108,7 +108,7 @@ input {
 
 
 .form_wrapper{
-    width: 800px;
+    width: 850px;
 }
 
 #GuestBook_body{
@@ -142,5 +142,9 @@ input {
 }
 .form_error{
     color: red;
+}
+
+.locale{
+    float: right;
 }
 

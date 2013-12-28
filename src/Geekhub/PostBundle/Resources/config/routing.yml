@@ -1,6 +1,7 @@
 guestBook:
-    pattern:  /
-    defaults: { _controller: GeekhubPostBundle:GuestBook:index }
+    pattern:  /{_locale}
+    defaults: { _controller: GeekhubPostBundle:GuestBook:index, _locale: en }
+    #requirements: _locale: en|ru
 
 guestBook_show:
     pattern:  /show/{slug}
@@ -9,3 +10,8 @@ guestBook_show:
 guestBook_remove:
     pattern:  /remove/{slug}
     defaults: { _controller: GeekhubPostBundle:GuestBook:remove }
+
+guestBook_locale:
+    pattern:  /locale/{locale}
+    defaults: { _controller: GeekhubPostBundle:GuestBook:locale, locale: en }
+

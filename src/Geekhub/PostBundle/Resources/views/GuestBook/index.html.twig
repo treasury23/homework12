@@ -2,24 +2,30 @@
 
 {% block body %}
         <div class="masthead">
-            <h3 class="text-muted">HEADER</h3>
+            <div class="text-muted">HEADER
+                <div class='locale'>
+                    <a href="{{ path('guestBook_locale', {'locale': 'en'}) }}">En</a>|
+                    <a href="{{ path('guestBook_locale', {'locale': 'ru'}) }}">Ru</a>
+                </div>
+            </div>
+
         </div>
     <div class="row">
         <form action="{{ path('guestBook') }}" method="post" >
         <div class="form_wrapper">
             <div class="form-group">
-                {{ form_label(form.name)}}
+                {{ form_label(form.name, 'Name'|trans)}}
                 {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.email)}}
+                {{ form_label(form.email, 'E-mail'|trans)}}
                 {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Send</button>
+                <button type="submit" class="btn btn-default">{{ 'Send'|trans }}</button>
             </div>
             <div class="form_textarea">
-                {{ form_label(form.body)}}
+                {{ form_label(form.body, 'Body'|trans)}}
                 {{ form_widget(form.body, {'attr': {'class': 'form-control form-textarea'}}) }}
             </div>
             <div class="form_error">
@@ -35,15 +41,15 @@
             {% for post in posts %}
             <div class="post">
                 <div class="title-post">
-                    <p>Запись #{{ post.slug }}</p>
+                    <p>{{ 'Post'|trans }} №{{ post.slug }}</p>
                     <p>{#{ post.body | slice(0,100) }#}</p>
                     <p>{{ post.body|limitSymbol(100) }}</p>
-                    <p>Дата сообщения:{{ post.getCreated()| date("d.m.Y")  }}</p>
+                    <p>{{ 'Date messages'|trans }}: {{ post.getCreated()| date("d.m.Y")  }}</p>
 
                 </div>
                 <div class="post-button">
-                    <a class="btn btn-primary" href="{{ path('guestBook_show', {'slug': post.slug}) }}" role="button">Show</a><br>
-                    <a class="btn btn-danger" href="{{ path('guestBook_remove', {'slug': post.slug}) }}" role="button">Delete</a>
+                    <a class="btn btn-primary" href="{{ path('guestBook_show', {'slug': post.slug}) }}" role="button">{{ 'Show'|trans }}</a><br>
+                    <a class="btn btn-danger" href="{{ path('guestBook_remove', {'slug': post.slug}) }}" role="button">{{ 'Delete'|trans }}</a>
                 </div>
             </div>
             {% endfor %}

@@ -11,6 +11,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class GuestBookController extends Controller
 {
+    public function localeAction($locale)
+    {
+        $this->get('request')->setLocale($locale);
+
+        return $this->redirect($this->generateUrl('guestBook', array('_locale' => $locale) ));
+    }
 
     /**
      * @Template()
