@@ -2,6 +2,10 @@ blogHome:
     pattern: /
     defaults: {_controller: GeekhubPostBundle:Blog:home}
 
+blogAbout:
+    pattern: /about
+    defaults: {_controller: GeekhubPostBundle:Blog:about}
+
 guestBook:
     pattern:  /guestbook{_locale}
     defaults: { _controller: GeekhubPostBundle:GuestBook:index, _locale: en }
