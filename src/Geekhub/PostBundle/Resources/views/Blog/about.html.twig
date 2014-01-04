@@ -1,20 +1,27 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}About me{% endblock %}
 {% block body %}
-{% for item in items %}
+
     <div class="wrapper">
+    {% for item in items %}
         <div class="title">{{ item.title }}</div>
         <div class="img_float"><img src="{{ item.image.path | imagine_filter('my_thumb')  }}"></div>
         <div>{{ item.body }}</div>
+    {% endfor %}
     </div>
     <div class="sidebar">
         <div class="article">
             <div class="title">Last Articles</div>
+            {% for last_article in last_articles %}
+                <div class="title-article"><a href="#">{{ last_article.title }}</a></div>
+            {% endfor %}
         </div>
         <div class="post-guestbook">
             <div class="title">Last post from questbook</div>
+            {% for last_post in last_posts %}
+                <div class="title-article"><a href="#">{{ last_post.name }}</a></div>
+            {% endfor %}
         </div>
     </div>
-{% endfor %}
-
 {% endblock body %}

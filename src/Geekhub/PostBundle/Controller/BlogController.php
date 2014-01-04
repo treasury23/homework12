@@ -6,12 +6,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use Geekhub\PostBundle\Entity\About;
+use Geekhub\PostBundle\Entity\GuestBook;
 
 class BlogController extends Controller
 {
     public function homeAction()
     {
-        return $this->render('GeekhubPostBundle:Blog:blog.html.twig');
+        $articles = $this->getDoctrine()->getRepository('GeekhubPostBundle:Blog');
+
+        if (!$articles) {
+            throw new \Exception("Product not found!");
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
+        $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
+
+        return $this->render('GeekhubPostBundle:Blog:blog.html.twig', array('articles' => $articles->findAll(),
+                                                                             'last_articles' => $last_articles,
+                                                                                'last_posts' => $last_posts));
     }
 
     public function aboutAction()
@@ -22,7 +35,13 @@ class BlogController extends Controller
             throw new \Exception("Product not found!");
         }
 
-        return $this->render('GeekhubPostBundle:Blog:about.html.twig', array('items' => $item->findAll()));
+        $em = $this->getDoctrine()->getManager();
+        $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
+        $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
+
+        return $this->render('GeekhubPostBundle:Blog:about.html.twig', array('items' => $item->findAll(),
+                                                                                'last_articles' => $last_articles,
+                                                                                'last_posts' => $last_posts));
     }
 }
 

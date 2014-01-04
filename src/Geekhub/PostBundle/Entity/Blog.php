@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @ORM\Entity
  * @ORM\Table(name="blog")
- *
+ * @ORM\Entity(repositoryClass="Geekhub\PostBundle\Repository\BlogRepository")
  */
 class Blog
 {

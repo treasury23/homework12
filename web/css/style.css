@@ -189,4 +189,8 @@ input {
     float: right;
     height: 500px;
 }
+.title-article{
+    text-decoration: underline;
+    font-size: 15px;
+}
 
