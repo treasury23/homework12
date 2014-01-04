@@ -23,7 +23,8 @@
         "twbs/bootstrap": "3.0.*@dev",
         "components/jquery": "1.10.2",
         "knplabs/knp-paginator-bundle": "dev-master",
-        "stof/doctrine-extensions-bundle": "v1.1.0"
+        "stof/doctrine-extensions-bundle": "v1.1.0",
+        "liip/imagine-bundle": "1.0.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

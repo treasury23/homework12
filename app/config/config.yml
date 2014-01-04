@@ -105,3 +105,10 @@ stof_doctrine_extensions:
              default:
                  timestampable: true
                  sluggable: true
+
+liip_imagine:
+    filter_sets:
+        my_thumb:
+            quality: 90
+            filters:
+                thumbnail: { size: [100, 100], mode: outbound }
