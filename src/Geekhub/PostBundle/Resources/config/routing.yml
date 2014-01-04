@@ -1,5 +1,9 @@
+blogHome:
+    pattern: /
+    defaults: {_controller: GeekhubPostBundle:Blog:home}
+
 guestBook:
-    pattern:  /{_locale}
+    pattern:  /guestbook{_locale}
     defaults: { _controller: GeekhubPostBundle:GuestBook:index, _locale: en }
     #requirements: _locale: en|ru
 
@@ -12,6 +16,6 @@ guestBook_remove:
     defaults: { _controller: GeekhubPostBundle:GuestBook:remove }
 
 guestBook_locale:
-    pattern:  /locale/{locale}
+    pattern:  /{locale}
     defaults: { _controller: GeekhubPostBundle:GuestBook:locale, locale: en }
 

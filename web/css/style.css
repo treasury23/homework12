@@ -148,3 +148,25 @@ input {
     float: right;
 }
 
+.menu ul{
+    list-style-type: none;
+    padding: 0 20px 10px 0;
+}
+
+.menu ul li{
+    float: left;
+    padding-right: 10px;
+}
+
+.search{
+    float: right;
+    margin-top: -20px;
+}
+
+.masthead{
+    height: 80px;
+}
+
+.text-muted{
+    margin-bottom: 10px;
+}

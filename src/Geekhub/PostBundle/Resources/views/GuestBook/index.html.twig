@@ -1,15 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-        <div class="masthead">
-            <div class="text-muted">HEADER
-                <div class='locale'>
-                    <a href="{{ path('guestBook_locale', {'locale': 'en'}) }}">En</a>|
-                    <a href="{{ path('guestBook_locale', {'locale': 'ru'}) }}">Ru</a>
-                </div>
-            </div>
 
-        </div>
     <div class="row">
         <form action="{{ path('guestBook') }}" method="post" >
         <div class="form_wrapper">
@@ -58,7 +50,5 @@
 
         </div>
         <!-- Site footer -->
-        <div class="footer">
-            <p>FOOTER</p>
-        </div>
+
 {% endblock body %}

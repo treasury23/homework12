@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}GuestBook{% endblock %}</title>
+
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"/>
         <link rel="stylesheet" href="{{ 'css/style.css' }}"/>
@@ -15,7 +16,39 @@
 </head>
 <body>
 <div class="container">
+    {% block header %}
+        <div class="masthead">
+        <div class="text-muted">HEADER
+            <div class='locale'>
+                <a href="{{ path('guestBook_locale', {'locale': 'en'}) }}">En</a>|
+                <a href="{{ path('guestBook_locale', {'locale': 'ru'}) }}">Ru</a>
+            </div>
+        </div>
+            <div class="menu">
+                <ul class="">
+                    <li class="active">
+                        <a href="{{ path('blogHome') }}">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="">About me</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ path('guestBook') }}">GuestBook</a>
+                    </li>
+                </ul>
+            <div class="search">
+                <input type="text" placeholder="Search..." name="srch" value="" class="searchInput"/>
+            </div>
+            </div>
+    </div>
+    {% endblock %}
 {% block body %}{% endblock %}
-</div> <!-- /container -->
+    {% block footer %}
+        <div class="footer">
+            <p>FOOTER</p>
+        </div>
+    {% endblock %}
+</div>
+<!-- /container -->
 </body>
 </html>
