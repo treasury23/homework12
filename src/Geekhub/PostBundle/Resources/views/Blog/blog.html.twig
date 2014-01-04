@@ -5,7 +5,9 @@
     <div class="wrapper">
     {% for article in articles %}
             <div class="article-post">
-                <div class="title"><a href="#">{{ article.title }}</a></div>
+                <div class="title"><a href="#">{{ article.title }}</a>
+                    <div class="category">Category: <a href="#">{{ article.categoryArticle.title }}</a></div>
+                </div>
                 <div class="post-date">Published at {{ article.getCreated()| date("Y-m-d")  }}</div>
                 <div class="img_float"><img src="{{ article.image.path | imagine_filter('my_thumb')  }}"></div>
                 <div>{{ article.description }}</div>

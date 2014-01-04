@@ -20,6 +20,7 @@ class LoadBlogData extends AbstractFixture implements OrderedFixtureInterface
             $article->setTitle($articleItem['title']);
             $article->setDescription($articleItem['description']);
             $article->setImage($this->getReference($articleItem['image']));
+            $article->setCategoryArticle($this->getReference($articleItem['category']));
 
             $manager->persist($article);
         }
@@ -34,6 +35,6 @@ class LoadBlogData extends AbstractFixture implements OrderedFixtureInterface
      */
     function getOrder()
     {
-        return 4;
+        return 5;
     }
 }

@@ -42,6 +42,12 @@ class Blog
     protected  $image;
 
     /**
+     * @ORM\ManyToOne(targetEntity="CategoryArticle", inversedBy="blog")
+     * @ORM\JoinColumn(name="category_article_id", referencedColumnName="id")
+     */
+    protected $categoryArticle;
+
+    /**
      * @var date $created
      *
      * @ORM\Column(type="datetime")
@@ -178,5 +184,28 @@ class Blog
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set categoryArticle
+     *
+     * @param \Geekhub\PostBundle\Entity\CategoryArticle $categoryArticle
+     * @return Blog
+     */
+    public function setCategoryArticle(\Geekhub\PostBundle\Entity\CategoryArticle $categoryArticle = null)
+    {
+        $this->categoryArticle = $categoryArticle;
+    
+        return $this;
+    }
+
+    /**
+     * Get categoryArticle
+     *
+     * @return \Geekhub\PostBundle\Entity\CategoryArticle 
+     */
+    public function getCategoryArticle()
+    {
+        return $this->categoryArticle;
     }
 }
