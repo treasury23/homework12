@@ -9,7 +9,7 @@
                     <div class="category">Category: <a href="#">{{ article.categoryArticle.title }}</a></div>
                 </div>
                 <div class="post-date">Published at {{ article.getCreated()| date("Y-m-d")  }}</div>
-                <div class="img_float"><img src="{{ article.image.path | imagine_filter('my_thumb')  }}"></div>
+                <div class="img_float"><img class="img-thumbnail" src="{{ article.image.path | imagine_filter('my_thumb')  }}"></div>
                 <div>{{ article.description | limitSymbol(400) }}</div>
                 <div class="category">Tags:
                 {% for tag in article.tags %}
@@ -27,10 +27,21 @@
                     <div class="title-article"><a href="#">{{ last_article.title }}</a></div>
                 {% endfor %}
             </div>
+            <div class="mostview-article">
+                <div class="title">Most viewed Articles</div>
+            </div>
             <div class="post-guestbook">
                 <div class="title">Last post from questbook</div>
                 {% for last_post in last_posts %}
                     <div class="title-article"><a href="#">{{ last_post.name }}</a></div>
+                {% endfor %}
+            </div>
+            <div class="tags">
+                <div class="title">Tags</div>
+                {% for tag, weight in tags %}
+                    <span class="weight-{{ weight }}">{{ tag }}</span>
+                {% else %}
+                    <p>There are no tags</p>
                 {% endfor %}
             </div>
         </div>

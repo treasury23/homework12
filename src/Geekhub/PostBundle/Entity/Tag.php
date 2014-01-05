@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="tag")
+ * @ORM\Entity(repositoryClass="Geekhub\PostBundle\Repository\TagRepository")
  */
 class Tag
 {
