@@ -1,7 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
+    {{ wo_render_breadcrumbs() }}
     <div class="row">
         <form action="{{ path('guestBook') }}" method="post" >
         <div class="form_wrapper">

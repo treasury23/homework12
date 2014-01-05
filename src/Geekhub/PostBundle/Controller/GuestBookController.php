@@ -23,6 +23,10 @@ class GuestBookController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("blogHome"));
+        $breadcrumbs->addItem("GuestBook", $this->get("router")->generate("guestBook"));
+
         $post = new GuestBook();
         $form = $this->createForm(new GuestBookType(), $post);
         $em = $this->getDoctrine()->getManager();

@@ -24,7 +24,8 @@
         "components/jquery": "1.10.2",
         "knplabs/knp-paginator-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "v1.1.0",
-        "liip/imagine-bundle": "1.0.*@dev"
+        "liip/imagine-bundle": "1.0.*@dev",
+        "whiteoctober/breadcrumbs-bundle": "1.0.0"
     },
     "scripts": {
         "post-install-cmd": [

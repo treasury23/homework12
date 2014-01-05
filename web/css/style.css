@@ -215,4 +215,8 @@ input {
 .weight-4 { font-size: 21px; }
 .weight-5 { font-size: 24px; }
 
+.separator{
+    display: none;
+}
+
 

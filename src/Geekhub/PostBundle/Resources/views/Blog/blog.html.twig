@@ -3,6 +3,7 @@
 {% block title %}Blog{% endblock %}
 {% block body %}
     <div class="wrapper">
+        {{ wo_render_breadcrumbs() }}
     {% for article in articles %}
             <div class="article-post">
                 <div class="title"><a href="#">{{ article.title }}</a>

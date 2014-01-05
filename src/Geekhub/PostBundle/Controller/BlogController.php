@@ -12,6 +12,9 @@ class BlogController extends Controller
 {
     public function homeAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("blogHome"));
+
         $articles = $this->getDoctrine()->getRepository('GeekhubPostBundle:Blog');
 
         if (!$articles) {
@@ -34,6 +37,10 @@ class BlogController extends Controller
 
     public function aboutAction()
     {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->addItem("Home", $this->get("router")->generate("blogHome"));
+        $breadcrumbs->addItem("About me", $this->get("router")->generate("blogAbout"));
+
         $item = $this->getDoctrine()->getRepository('GeekhubPostBundle:About');
 
         if (!$item) {

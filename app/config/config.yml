@@ -112,3 +112,5 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [100, 100], mode: outbound }
+
+white_october_breadcrumbs: ~
