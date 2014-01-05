@@ -7,6 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Symfony\Component\Yaml\Yaml;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class LoadBlogData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -22,6 +23,8 @@ class LoadBlogData extends AbstractFixture implements OrderedFixtureInterface
             $article->setImage($this->getReference($articleItem['image']));
             $article->setCategoryArticle($this->getReference($articleItem['category']));
 
+            $article->setTags($this->getReferencesFromArray($articleItem['tags']));
+
             $manager->persist($article);
         }
 
@@ -35,6 +38,17 @@ class LoadBlogData extends AbstractFixture implements OrderedFixtureInterface
      */
     function getOrder()
     {
-        return 5;
+        return 6;
+    }
+
+    protected function getReferencesFromArray(array $array)
+    {
+        $outputReferences = new ArrayCollection();
+
+        foreach ($array as $reference) {
+            $outputReferences->add($this->getReference($reference));
+        }
+
+        return $outputReferences;
     }
 }

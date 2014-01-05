@@ -62,6 +62,21 @@ class Blog
     protected  $slug;
 
     /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="blogs")
+     * @ORM\JoinTable(name="blog_tag",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="blog_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    protected  $tags;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -207,5 +222,53 @@ class Blog
     public function getCategoryArticle()
     {
         return $this->categoryArticle;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add tags
+     *
+     * @param \Geekhub\PostBundle\Entity\Tag $tags
+     * @return Blog
+     */
+    public function addTag(\Geekhub\PostBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Geekhub\PostBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Geekhub\PostBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
     }
 }

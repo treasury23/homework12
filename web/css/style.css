@@ -91,7 +91,7 @@ body {
 }
 
 input {
-    width: 300px;
+    width: 250px;
 }
 
 .required {
@@ -151,11 +151,13 @@ input {
 .menu ul{
     list-style-type: none;
     padding: 0 20px 10px 0;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .menu ul li{
     float: left;
-    padding-right: 10px;
+    padding-right: 25px;
 }
 
 .search{
@@ -171,21 +173,26 @@ input {
     margin-bottom: 10px;
 }
 .title{
-    padding: 20px 0px;
+    padding: 18px 0px;
     font-size: 16px;
     font-weight: bold;
 }
+
+.title a{
+    text-decoration: underline;
+}
+
 .img_float{
     float: left;
     padding: 0 7px 7px 0;
 }
 .wrapper{
-    width: 70%;
+    width: 75%;
     float:left;
-    padding-right: 20px;
+    padding-right: 70px;
 }
 .sidebar{
-    width: 30%;
+    width: 20%;
     float: right;
     height: 500px;
 }
@@ -195,6 +202,11 @@ input {
 }
 .category{
     float: right;
-
+    font-size: 12px;
+    padding-top: 20px;
 }
+.article-post{
+    margin-bottom: 30px;
+}
+
 
