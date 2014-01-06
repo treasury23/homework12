@@ -11,18 +11,7 @@
         <div>{{ item.body }}</div>
     {% endfor %}
     </div>
-    <div class="sidebar">
-        <div class="article">
-            <div class="title">Last Articles</div>
-            {% for last_article in last_articles %}
-                <div class="title-article"><a href="#">{{ last_article.title }}</a></div>
-            {% endfor %}
-        </div>
-        <div class="post-guestbook">
-            <div class="title">Last post from questbook</div>
-            {% for last_post in last_posts %}
-                <div class="title-article"><a href="#">{{ last_post.name }}</a></div>
-            {% endfor %}
-        </div>
-    </div>
+    {% block sidebar %}
+        {% include ('GeekhubPostBundle::sidebar.html.twig') %}
+    {% endblock sidebar %}
 {% endblock body %}

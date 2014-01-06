@@ -2,6 +2,11 @@ blogHome:
     pattern: /
     defaults: {_controller: GeekhubPostBundle:Blog:home}
 
+blogArticle:
+    pattern: /article/{slug}
+    defaults: {_controller: GeekhubPostBundle:Blog:article}
+
+
 blogAbout:
     pattern: /about
     defaults: {_controller: GeekhubPostBundle:Blog:about}
