@@ -22,7 +22,6 @@ class LoadBlogData extends AbstractFixture implements OrderedFixtureInterface
             $article->setDescription($articleItem['description']);
             $article->setImage($this->getReference($articleItem['image']));
             $article->setCategoryArticle($this->getReference($articleItem['category']));
-
             $article->setTags($this->getReferencesFromArray($articleItem['tags']));
 
             $manager->persist($article);

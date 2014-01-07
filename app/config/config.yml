@@ -59,6 +59,11 @@ assetic:
                    - %kernel.root_dir%/../vendor/components/jquery/jquery.js
                  output: js/jquery.js
 
+            my_style:
+                 inputs:
+                   - %kernel.root_dir%/../web/css/style.css
+                 output: css/style.css
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -112,5 +117,9 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [100, 100], mode: outbound }
+        my_thumb_original:
+                    quality: 100
+                    filters:
+                        thumbnail: { size: [300, 300], mode: outbound }
 
 white_october_breadcrumbs: ~

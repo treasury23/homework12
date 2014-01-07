@@ -6,7 +6,7 @@
         {{ wo_render_breadcrumbs() }}
     {% for article in articles %}
             <div class="article-post">
-                <div class="title"><a href="#">{{ article.title }}</a>
+                <div class="title"><a href="{{ path('blogArticle', {'slug': article.slug}) }}">{{ article.title }}</a>
                     <div class="category">Category: <a href="#">{{ article.categoryArticle.title }}</a></div>
                 </div>
                 <div class="post-date">Published at {{ article.getCreated()| date("Y-m-d")  }}</div>

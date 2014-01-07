@@ -58,5 +58,26 @@ class BlogController extends Controller
                                                                                 'last_posts' => $last_posts,
                                                                                 'tags' => $tagWeights));
     }
+
+    public function articleAction($slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('GeekhubPostBundle:Blog')->findOneBy(array('slug' => $slug));
+
+        if (!$article) {
+            throw new \Exception("Post not found!");
+        }
+
+        $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
+        $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
+        $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
+        $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
+        //$created = $posts->getCreated()->format('d.m.Y');
+
+        return $this->render('GeekhubPostBundle:Blog:article.html.twig', array('article' => $article,
+                                                                                'last_articles' => $last_articles,
+                                                                                'last_posts' => $last_posts,
+                                                                                'tags' => $tagWeights));
+    }
 }
 
