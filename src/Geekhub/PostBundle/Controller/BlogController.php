@@ -24,12 +24,14 @@ class BlogController extends Controller
         $em = $this->getDoctrine()->getManager();
         $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
         $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
+        $viewedArticles = $em->getRepository('GeekhubPostBundle:Blog')->findViewedArticle();
 
         $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
         $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
 
         return $this->render('GeekhubPostBundle:Blog:blog.html.twig', array('articles' => $articles->findAll(),
                                                                              'last_articles' => $last_articles,
+                                                                                'viewedArticles' => $viewedArticles,
                                                                                 'last_posts' => $last_posts,
                                                                                     'tags' => $tagWeights));
     }
@@ -49,12 +51,14 @@ class BlogController extends Controller
         $em = $this->getDoctrine()->getManager();
         $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
         $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
+        $viewedArticles = $em->getRepository('GeekhubPostBundle:Blog')->findViewedArticle();
 
         $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
         $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
 
         return $this->render('GeekhubPostBundle:Blog:about.html.twig', array('items' => $item->findAll(),
                                                                                 'last_articles' => $last_articles,
+                                                                                'viewedArticles' => $viewedArticles,
                                                                                 'last_posts' => $last_posts,
                                                                                 'tags' => $tagWeights));
     }
@@ -73,9 +77,14 @@ class BlogController extends Controller
         $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
         $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
         //$created = $posts->getCreated()->format('d.m.Y');
+        $viewedArticles = $em->getRepository('GeekhubPostBundle:Blog')->findViewedArticle();
+
+        $article->setViewed($article->getViewed()+1);
+        $em->flush();
 
         return $this->render('GeekhubPostBundle:Blog:article.html.twig', array('article' => $article,
                                                                                 'last_articles' => $last_articles,
+                                                                                'viewedArticles' => $viewedArticles,
                                                                                 'last_posts' => $last_posts,
                                                                                 'tags' => $tagWeights));
     }

@@ -77,6 +77,11 @@ class Blog
     protected  $tags;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $viewed;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -270,5 +275,28 @@ class Blog
     public function setTags($tags)
     {
         $this->tags = $tags;
+    }
+
+    /**
+     * Set viewed
+     *
+     * @param integer $viewed
+     * @return Blog
+     */
+    public function setViewed($viewed)
+    {
+        $this->viewed = $viewed;
+    
+        return $this;
+    }
+
+    /**
+     * Get viewed
+     *
+     * @return integer 
+     */
+    public function getViewed()
+    {
+        return $this->viewed;
     }
 }
