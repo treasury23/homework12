@@ -194,7 +194,7 @@ input {
 .sidebar{
     width: 20%;
     float: right;
-    height: 600px;
+    height: 700px;
 }
 .title-article{
     text-decoration: underline;
@@ -219,4 +219,6 @@ input {
     display: none;
 }
 
-
+.navigation{
+    text-align: center;
+}

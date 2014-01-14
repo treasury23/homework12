@@ -10,12 +10,12 @@ use Geekhub\PostBundle\Entity\GuestBook;
 
 class BlogController extends Controller
 {
-    public function homeAction()
+    public function homeAction(Request $request)
     {
         $breadcrumbs = $this->get("white_october_breadcrumbs");
         $breadcrumbs->addItem("Home", $this->get("router")->generate("blogHome"));
 
-        $articles = $this->getDoctrine()->getRepository('GeekhubPostBundle:Blog');
+        $articles = $this->getDoctrine()->getRepository('GeekhubPostBundle:Blog')->findAll();
 
         if (!$articles) {
             throw new \Exception("Product not found!");
@@ -29,7 +29,14 @@ class BlogController extends Controller
         $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
         $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
 
-        return $this->render('GeekhubPostBundle:Blog:blog.html.twig', array('articles' => $articles->findAll(),
+        $paginator_blog = $this->get('knp_paginator');
+        $articles = $paginator_blog->paginate(
+            $articles,
+            $request->query->get('page', 1),
+            $this->container->getParameter('post_pagination')
+        );
+
+        return $this->render('GeekhubPostBundle:Blog:blog.html.twig', array('articles' => $articles,
                                                                              'last_articles' => $last_articles,
                                                                                 'viewedArticles' => $viewedArticles,
                                                                                 'last_posts' => $last_posts,
