@@ -21,14 +21,6 @@ class BlogController extends Controller
             throw new \Exception("Product not found!");
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
-        $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
-        $viewedArticles = $em->getRepository('GeekhubPostBundle:Blog')->findViewedArticle();
-
-        $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
-        $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
-
         $paginator_blog = $this->get('knp_paginator');
         $articles = $paginator_blog->paginate(
             $articles,
@@ -37,10 +29,10 @@ class BlogController extends Controller
         );
 
         return $this->render('GeekhubPostBundle:Blog:blog.html.twig', array('articles' => $articles,
-                                                                             'last_articles' => $last_articles,
-                                                                                'viewedArticles' => $viewedArticles,
-                                                                                'last_posts' => $last_posts,
-                                                                                    'tags' => $tagWeights));
+                                                                            'last_articles' =>$this->lastArticles(),
+                                                                            'viewedArticles' =>$this->viewedArticles(),
+                                                                            'last_posts' =>$this->lastPosts(),
+                                                                            'tags' =>$this->tagCloud()));
     }
 
     public function aboutAction()
@@ -55,19 +47,11 @@ class BlogController extends Controller
             throw new \Exception("Product not found!");
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
-        $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
-        $viewedArticles = $em->getRepository('GeekhubPostBundle:Blog')->findViewedArticle();
-
-        $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
-        $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
-
         return $this->render('GeekhubPostBundle:Blog:about.html.twig', array('items' => $item->findAll(),
-                                                                                'last_articles' => $last_articles,
-                                                                                'viewedArticles' => $viewedArticles,
-                                                                                'last_posts' => $last_posts,
-                                                                                'tags' => $tagWeights));
+                                                                            'last_articles' =>$this->lastArticles(),
+                                                                            'viewedArticles' =>$this->viewedArticles(),
+                                                                            'last_posts' =>$this->lastPosts(),
+                                                                            'tags' =>$this->tagCloud()));
     }
 
     public function articleAction($slug)
@@ -79,21 +63,43 @@ class BlogController extends Controller
             throw new \Exception("Post not found!");
         }
 
-        $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
-        $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
-        $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
-        $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
-        //$created = $posts->getCreated()->format('d.m.Y');
-        $viewedArticles = $em->getRepository('GeekhubPostBundle:Blog')->findViewedArticle();
-
         $article->setViewed($article->getViewed()+1);
         $em->flush();
 
         return $this->render('GeekhubPostBundle:Blog:article.html.twig', array('article' => $article,
-                                                                                'last_articles' => $last_articles,
-                                                                                'viewedArticles' => $viewedArticles,
-                                                                                'last_posts' => $last_posts,
-                                                                                'tags' => $tagWeights));
+                                                                                'last_articles' =>$this->lastArticles(),
+                                                                                'viewedArticles' =>$this->viewedArticles(),
+                                                                                'last_posts' =>$this->lastPosts(),
+                                                                                'tags' =>$this->tagCloud()));
+    }
+
+    public function lastArticles()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
+    }
+
+    public function viewedArticles()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $viewedArticles = $em->getRepository('GeekhubPostBundle:Blog')->findViewedArticle();
+    }
+
+    public function lastPosts()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $last_posts = $em->getRepository('GeekhubPostBundle:GuestBook')->findLastPost();
+    }
+
+    public function tagCloud()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tags = $em->getRepository('GeekhubPostBundle:Tag')->getTags();
+
+        return $tagWeights = $em->getRepository('GeekhubPostBundle:Tag')->getTagWeights($tags);
     }
 }
 
