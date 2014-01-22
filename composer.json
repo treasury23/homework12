@@ -25,7 +25,9 @@
         "knplabs/knp-paginator-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "v1.1.0",
         "liip/imagine-bundle": "1.0.*@dev",
-        "whiteoctober/breadcrumbs-bundle": "1.0.0"
+        "whiteoctober/breadcrumbs-bundle": "1.0.0",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
+
     },
     "scripts": {
         "post-install-cmd": [

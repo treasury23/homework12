@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: myparameters.yml }
     - { resource: security.yml }
     - { resource: @GeekhubPostBundle/Resources/config/services.xml }
 
@@ -123,3 +124,8 @@ liip_imagine:
                         thumbnail: { size: [300, 300], mode: outbound }
 
 white_october_breadcrumbs: ~
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Geekhub\PostBundle\Entity\User
