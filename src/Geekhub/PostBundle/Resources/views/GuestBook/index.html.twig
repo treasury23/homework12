@@ -1,0 +1,55 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+        <div class="masthead">
+            <h3 class="text-muted">HEADER</h3>
+        </div>
+    <div class="row">
+        <form action="{{ path('guestBook') }}" method="post" >
+        <div class="form_wrapper">
+            <div class="form-group">
+                {{ form_label(form.name)}}
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.email)}}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Send</button>
+            </div>
+            <div class="form_textarea">
+                {{ form_label(form.body)}}
+                {{ form_widget(form.body, {'attr': {'class': 'form-control form-textarea'}}) }}
+            </div>
+            <div class="form_error">
+                {{ form_errors(form.name) }}
+                {{ form_errors(form.email) }}
+                {{ form_errors(form.body) }}
+            </div>
+        </div>
+            {{ form_rest(form) }}
+     </form>
+    </div>
+        <div class="wrapper-post">
+            {% for post in posts %}
+            <div class="post">
+                <div class="title-post">
+                    <p>Запись #{{ post.id }}</p>
+                    <p>{{ post.body | slice(0,100) }}</p>
+                </div>
+                <div class="post-button">
+                    <a class="btn btn-primary" href="{{ path('guestBook_show', {'id': post.id}) }}" role="button">Show</a><br>
+                    <a class="btn btn-danger" href="{{ path('guestBook_remove', {'id': post.id}) }}" role="button">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+
+                {{ knp_pagination_render(posts) }}
+
+        </div>
+        <!-- Site footer -->
+        <div class="footer">
+            <p>FOOTER</p>
+        </div>
+{% endblock body %}

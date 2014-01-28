@@ -1,0 +1,11 @@
+guestBook:
+    pattern:  /
+    defaults: { _controller: GeekhubPostBundle:GuestBook:index }
+
+guestBook_show:
+    pattern:  /show/{id}
+    defaults: { _controller: GeekhubPostBundle:GuestBook:show }
+
+guestBook_remove:
+    pattern:  /remove/{id}
+    defaults: { _controller: GeekhubPostBundle:GuestBook:remove }

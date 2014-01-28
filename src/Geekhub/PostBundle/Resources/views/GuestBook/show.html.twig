@@ -1,0 +1,9 @@
+{% extends "::base.html.twig" %}
+{% block title %}Message #{{ posts.id }}{% endblock title %}
+
+{% block body %}
+    <p>Name:{{ posts.name }}</p>
+    <p>E-mail:{{ posts.email }}</p>
+    <p>Body:{{ posts.body }}</p>
+    <p><a class="btn btn-primary" href="{{ path('guestBook' )}}" role="button">Home</a></p>
+{% endblock body %}
