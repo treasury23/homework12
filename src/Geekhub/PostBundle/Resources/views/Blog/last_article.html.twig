@@ -1,0 +1,4 @@
+<div class="title">Last Articles</div>
+{% for last_article in last_articles %}
+    <div class="title-article"><a href="{{ path('blogArticle', {'slug': last_article.slug}) }}">{{ last_article.title }}</a></div>
+{% endfor %}

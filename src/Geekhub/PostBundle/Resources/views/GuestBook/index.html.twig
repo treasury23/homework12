@@ -1,0 +1,54 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {{ wo_render_breadcrumbs() }}
+    <div class="row">
+        <form action="{{ path('guestBook') }}" method="post" >
+        <div class="form_wrapper">
+            <div class="form-group">
+                {{ form_label(form.name, 'Name'|trans)}}
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.email, 'E-mail'|trans)}}
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">{{ 'Send'|trans }}</button>
+            </div>
+            <div class="form_textarea">
+                {{ form_label(form.body, 'Body'|trans)}}
+                {{ form_widget(form.body, {'attr': {'class': 'form-control form-textarea'}}) }}
+            </div>
+            <div class="form_error">
+                {{ form_errors(form.name) }}
+                {{ form_errors(form.email) }}
+                {{ form_errors(form.body) }}
+            </div>
+        </div>
+            {{ form_rest(form) }}
+     </form>
+    </div>
+        <div class="wrapper-post">
+            {% for post in posts %}
+            <div class="post">
+                <div class="title-post">
+                    <p>{{ 'Post'|trans }} №{{ post.slug }}</p>
+                    <p>{#{ post.body | slice(0,100) }#}</p>
+                    <p>{{ post.body|limitSymbol(100) }}</p>
+                    <p>{{ 'Date messages'|trans }}: {{ post.getCreated()| date("d.m.Y")  }}</p>
+
+                </div>
+                <div class="post-button">
+                    <a class="btn btn-primary" href="{{ path('guestBook_show', {'slug': post.slug}) }}" role="button">{{ 'Show'|trans }}</a><br>
+                    <a class="btn btn-danger" href="{{ path('guestBook_remove', {'slug': post.slug}) }}" role="button">{{ 'Delete'|trans }}</a>
+                </div>
+            </div>
+            {% endfor %}
+
+                {{ knp_pagination_render(posts) }}
+
+        </div>
+        <!-- Site footer -->
+
+{% endblock body %}

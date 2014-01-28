@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ article.slug }}{% endblock %}
+{% block body %}
+    <div class="wrapper">
+        {{ wo_render_breadcrumbs() }}
+
+            <div class="article-post">
+                <div class="title"><a href="{{ path('blogArticle', {'slug': article.slug}) }}">{{ article.title }}</a>
+                    <div class="category">Category: <a href="#">{{ article.categoryArticle.title }}</a></div>
+                </div>
+                <div class="post-date">Published at {{ article.getCreated()| date("Y-m-d")  }}</div>
+                <div class="img_float"><img class="img-thumbnail" src="{{ article.image.path | imagine_filter('my_thumb_original')  }}"></div>
+                <div>{{ article.description }}</div>
+                <div class="category">Tags:
+                    {% for tag in article.tags %}
+                        <span class="label label-info">{{ tag.title }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+    </div>
+    {% block sidebar %}
+        {% include ('GeekhubPostBundle::sidebar.html.twig') %}
+    {% endblock sidebar %}
+{% endblock body %}
