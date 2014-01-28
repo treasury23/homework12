@@ -67,7 +67,7 @@ class GuestBookController extends Controller
             throw new \Exception("Post not found!");
         }
 
-        $created = $posts->getCreated()->format('d.m.Y');
+        $created = $posts->getCreated();
 
         return array('posts' => $posts, 'created' => $created);
     }

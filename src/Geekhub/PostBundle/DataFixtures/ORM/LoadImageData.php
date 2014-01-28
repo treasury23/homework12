@@ -28,13 +28,11 @@ class LoadImageData extends AbstractFixture implements OrderedFixtureInterface
         foreach ($images as $image) {
 
             $img = new Image();
-
             $img->setPath($image);
-
             $manager->persist($img);
-
             $this->addReference($image, $img);
         }
+
         $manager->flush();
     }
 

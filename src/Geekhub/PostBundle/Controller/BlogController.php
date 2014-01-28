@@ -17,10 +17,6 @@ class BlogController extends Controller
 
         $articles = $this->getDoctrine()->getRepository('GeekhubPostBundle:Blog')->findAll();
 
-        if (!$articles) {
-            throw new \Exception("Product not found!");
-        }
-
         $paginator_blog = $this->get('knp_paginator');
         $articles = $paginator_blog->paginate(
             $articles,
@@ -42,10 +38,6 @@ class BlogController extends Controller
         $breadcrumbs->addItem("About me", $this->get("router")->generate("blogAbout"));
 
         $item = $this->getDoctrine()->getRepository('GeekhubPostBundle:About');
-
-        if (!$item) {
-            throw new \Exception("Product not found!");
-        }
 
         return $this->render('GeekhubPostBundle:Blog:about.html.twig', array('items' => $item->findAll(),
                                                                             'last_articles' =>$this->lastArticles(),
@@ -77,7 +69,7 @@ class BlogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        return $last_articles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
+        return $lastArticles = $em->getRepository('GeekhubPostBundle:Blog')->findLastArticle();
     }
 
     public function viewedArticles()
