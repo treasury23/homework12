@@ -1,0 +1,17 @@
+guestBook:
+    pattern:  /{_locale}
+    defaults: { _controller: GeekhubPostBundle:GuestBook:index, _locale: en }
+    #requirements: _locale: en|ru
+
+guestBook_show:
+    pattern:  /show/{slug}
+    defaults: { _controller: GeekhubPostBundle:GuestBook:show }
+
+guestBook_remove:
+    pattern:  /remove/{slug}
+    defaults: { _controller: GeekhubPostBundle:GuestBook:remove }
+
+guestBook_locale:
+    pattern:  /locale/{locale}
+    defaults: { _controller: GeekhubPostBundle:GuestBook:locale, locale: en }
+
